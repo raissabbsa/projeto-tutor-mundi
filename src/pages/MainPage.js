@@ -2,6 +2,7 @@ import book from "../images/livro.png";
 import styled from "styled-components";
 import { useState } from "react";
 import Stars from "../components/Stars";
+import Buttons from "../components/Buttons";
 
 export default function MainPage() {
   const [stars, setStars] = useState([false, false, false, false, false]);
@@ -14,6 +15,7 @@ export default function MainPage() {
           <Stars key={index} star={star} setStars={setStars} index={index} />
         ))}
       </StarsContainer>
+      <Buttons />
     </Body>
   );
 }
@@ -23,14 +25,14 @@ const Body = styled.div`
   flex-direction: column;
   align-items: center;
   & > img {
-    margin-top: 150px;
+    margin-top: 140px;
     width: 90px;
   }
   h1 {
-    width: 300px;
+    width: 350px;
     margin-top: 46px;
     font-weight: bold;
-    font-size: 34px;
+    font-size: 42px;
     text-align: center;
   }
 `;
