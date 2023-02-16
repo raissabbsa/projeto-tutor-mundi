@@ -1,11 +1,33 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { BASE_URL } from "../constants/urls";
 
-export default function Buttons() {
-  function sendGrade() {}
+export default function Buttons({ finished, evaluation }) {
+  const navigate = useNavigate();
+
+  function sendGrade() {
+    if (!finished) {
+      alert("Você precisa atribuir uma avaliação");
+    } else {
+      const body = { star: evaluation };
+      const promise = axios.post(`${BASE_URL}/stars`, body);
+
+      promise.then(() => {
+        navigate("/enviada");
+      });
+      promise.catch((err) => {
+        console.log(err);
+        alert("Não foi possível enviar sua avaliação, tente novamente!");
+      });
+    }
+  }
   return (
     <ButtonsContainer>
-      <Skip>PULAR</Skip>
-      <Continue onClick={sendGrade}>CONFIRMAR</Continue>
+      <Skip onClick={() => navigate("/finalizada")}>PULAR</Skip>
+      <Continue onClick={sendGrade} finished={finished}>
+        CONFIRMAR
+      </Continue>
     </ButtonsContainer>
   );
 }
@@ -27,7 +49,7 @@ const Skip = styled.button`
 const Continue = styled.button`
   height: 40px;
   width: 143px;
-  background-color: #c8c8c8;
+  background-color: ${(props) => (props.finished ? "#2CC6D0" : "#c8c8c8")};
   color: #ffffff;
   font-size: 16px;
   border: none;
