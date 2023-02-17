@@ -17,7 +17,7 @@ const Body = styled.div`
   padding-top: 150px;
   h1 {
     width: 600px;
-    margin-left: 25%;
+    margin: 0 auto 0;
     font-weight: bold;
     font-size: 37px;
     color: #ffffff;
@@ -27,7 +27,6 @@ const Body = styled.div`
     h1 {
       font-size: 30px;
       width: 400px;
-      margin-left: 10%;
     }
   }
 `;
