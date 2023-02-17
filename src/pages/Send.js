@@ -19,7 +19,7 @@ const Body = styled.div`
     font-size: 37px;
     color: #ffffff;
   }
-  @media (max-width: 611px) {
+  @media (max-width: 700px) {
     h1 {
       font-size: 30px;
       width: 400px;
